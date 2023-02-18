@@ -1,0 +1,21 @@
+#version: "3.3"
+
+services:
+  unit4:
+    container_name: unit4
+    build:
+      context: "./4_Policy_Gradient"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - "./4_Policy_Gradient:/HOME"
+    tty: true
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
