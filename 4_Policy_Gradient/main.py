@@ -12,7 +12,6 @@ from src.push_to_hub import push_to_hub
 
 
 def create_env(env_id):
-    env_id = "Pixelcopter-PLE-v0"
     # Create the env
     env = gym.make(env_id)
 

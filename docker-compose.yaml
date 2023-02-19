@@ -51,3 +51,37 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+  unit6_antbullet:
+    container_name: unit6_antbullet
+    build:
+      context: "./6_Actor_Critic/AntBullet"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - "./6_Actor_Critic/AntBullet:/HOME"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+  unit6_pandareach:
+    container_name: unit6_pandareach
+    build:
+      context: "./6_Actor_Critic/PandaReach"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - "./6_Actor_Critic/PandaReach:/HOME"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
