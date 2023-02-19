@@ -119,9 +119,9 @@ if __name__ == "__main__":
 
     pixelcopter_hyperparameters = {
         "h_size": 64,
-        "n_training_episodes": 100000,
+        "n_training_episodes": 1000000,
         "n_evaluation_episodes": 10,
-        "max_t": 10000,
+        "max_t": 50000,
         "gamma": 0.99,
         "lr": 1e-4,
         "env_id": env_id,

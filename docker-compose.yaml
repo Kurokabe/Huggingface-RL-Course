@@ -8,8 +8,40 @@ services:
       dockerfile: Dockerfile
     env_file:
       - .env
+    tty: true
     volumes:
       - "./4_Policy_Gradient:/HOME"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+  unit5_snowball:
+    container_name: unit5_snowball
+    build:
+      context: "./5_Unity_ML_Agents/Snowball"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    tty: true
+
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+
+  unit5_pyramids:
+    container_name: unit5_pyramids
+    build:
+      context: "./5_Unity_ML_Agents/Pyramids"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
     tty: true
 
     deploy:
