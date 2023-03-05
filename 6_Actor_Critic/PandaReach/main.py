@@ -41,11 +41,26 @@ if __name__ == "__main__":
 
     HfFolder.save_token(os.environ["TOKEN"])
 
-    env_id = "PandaPushDense-v2"
+    env_id = "PandaReachDense-v2"
 
     env, eval_env, s_size, a_size = create_env(env_id)
 
-    model = A2C(policy="MultiInputPolicy", env=env, verbose=1)
+    model = A2C(
+        policy="MultiInputPolicy",
+        env=env,
+        gae_lambda=0.9,
+        gamma=0.99,
+        learning_rate=0.00096,
+        max_grad_norm=0.5,
+        n_steps=8,
+        vf_coef=0.4,
+        ent_coef=0.0,
+        policy_kwargs=dict(log_std_init=-2, ortho_init=False),
+        normalize_advantage=False,
+        use_rms_prop=True,
+        use_sde=True,
+        verbose=1,
+    )
 
     model.learn(2_000_000)
 

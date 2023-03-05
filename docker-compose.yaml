@@ -56,8 +56,7 @@ services:
     build:
       context: "./6_Actor_Critic/AntBullet"
       dockerfile: Dockerfile
-    env_file:
-      - .env
+    env_file: .env
     tty: true
     volumes:
       - "./6_Actor_Critic/AntBullet:/HOME"
@@ -78,6 +77,24 @@ services:
     tty: true
     volumes:
       - "./6_Actor_Critic/PandaReach:/HOME"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
+
+  unit7:
+    container_name: unit7
+    build:
+      context: "./7_Multi_Agents"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - "./7_Multi_Agents:/HOME"
     deploy:
       resources:
         reservations:
