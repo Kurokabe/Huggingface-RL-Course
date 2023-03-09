@@ -102,3 +102,21 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+
+  unit8:
+    container_name: unit8
+    build:
+      context: "./8_PPO"
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - "./8_PPO:/HOME"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]
