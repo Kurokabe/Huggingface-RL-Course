@@ -120,3 +120,22 @@ services:
             - driver: nvidia
               count: 1
               capabilities: [ gpu ]
+  unit8_2:
+    container_name: unit8_2
+    build:
+      context: "./8_PPO_DOOM"
+      dockerfile: Dockerfile
+      shm-size: 4gb
+    shm-size: 4gb
+    env_file:
+      - .env
+    tty: true
+    volumes:
+      - "./8_PPO_DOOM:/HOME"
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [ gpu ]

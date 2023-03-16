@@ -202,3 +202,5 @@ poetry.toml
 
 # End of https://www.toptal.com/developers/gitignore/api/python,visualstudiocode,jupyternotebooks
 8_PPO/runs/*
+8_PPO_DOOM/runs/*
+8_PPO_DOOM/train_dir/*
